@@ -1,0 +1,77 @@
+{
+  "configurations": [
+    {
+      "type": "node",
+      "request": "launch",
+      "name": "Launch Program",
+      "program": "${workspaceFolder}/src/index.ts",
+      "preLaunchTask": "tsc: build - tsconfig.json",
+      "outFiles": [
+        "${workspaceFolder}/dist/**/*.js"
+      ]
+    },
+    {
+      "env": {
+        "NODE_ENV": "development"
+      },
+      "name": "Debug Program",
+      "outFiles": [
+        "${workspaceFolder}//dist//**//*.js"
+      ],
+      "preLaunchTask": "tsc: build - tsconfig.json",
+      "program": "${workspaceFolder}//dist//src//index.js",
+      "request": "launch",
+      "sourceMaps": true,
+      "type": "node"
+    },
+    {
+      "type": "node",
+      "request": "launch",
+      "name": "Debug",
+      "args": [
+        "${workspaceFolder}/src/index.ts"
+      ],
+      "runtimeArgs": [
+        "--nolazy",
+        "-r",
+        "ts-node/register",
+        "-r",
+        "tsconfig-paths/register"
+      ],
+      "sourceMaps": true,
+      "cwd": "${workspaceRoot}",
+      "console": "integratedTerminal",
+      "protocol": "inspector"
+    },
+    {
+      "args": [
+        "test",
+        "--runInBand",
+        "--no-cache"
+      ],
+      "console": "integratedTerminal",
+      "cwd": "${workspaceRoot}",
+      "env": {
+        "CI": "true"
+      },
+      "internalConsoleOptions": "neverOpen",
+      "name": "Debug Jest Tests",
+      "protocol": "inspector",
+      "request": "launch",
+      "runtimeArgs": [
+        "--inspect-brk",
+        "${workspaceRoot}/node_modules/jest/bin/jest.js",
+        "--runInBand",
+        "--coverage",
+        "false",
+        "--testTimeout",
+        "0"
+      ],
+      "type": "node"
+    }
+  ],
+  // Use IntelliSense to learn about possible Node.js debug attributes.
+  // Hover to view descriptions of existing attributes.
+  // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+  "version": "0.2.0"
+}
