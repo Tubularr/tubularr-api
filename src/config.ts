@@ -9,5 +9,13 @@ export const application = {
 
 export const youtubeDl = {
   platform: platform,
-  downloadPath: process.env.YOUTUBE_DL_DOWNLOAD_PATH || 'bin\\'
+  downloadPath: process.env.YOUTUBE_DL_DOWNLOAD_PATH || 'bin'
+};
+
+export const server = {
+  port: 8080
+};
+
+export const db = {
+  folder: process.env.SQLITE_DB_FOLDER || 'db'
 };
