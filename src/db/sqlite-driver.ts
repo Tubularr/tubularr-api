@@ -40,7 +40,7 @@ const createInitialTables = async (): Promise<void> => {
   )`);
 };
 
-export const getAllRowsFromTable = async (tableName: string): Promise<unknown[]> => {
+export const getAllRowsFromTable = async (tableName: string) => {
   let result;
 
   try {
@@ -77,8 +77,12 @@ export const insertSource = async (source: any): Promise<void> => {
       downloadThumbnails,
       downloadNfo,
       deleteSchedule,
+      downloadSubtitles,
+      subtitleLanguage,
       uuid
     ) VALUES (
+      ?,
+      ?,
       ?,
       ?,
       ?,
@@ -117,9 +121,34 @@ export const insertSource = async (source: any): Promise<void> => {
       source.downloadThumbnails,
       source.downloadNfo,
       source.deleteSchedule,
+      source.downloadSubtitles,
+      source.subtitleLanguage,
       uuid()
     );
   } catch (error) {
+    //TODO: Use actual logger
+    console.error(error);
+  }
+};
+
+export const deleteFromTable = async (tableName: string, query: string): Promise<void> => {
+  try {
+    await db.exec(
+      `DELETE FROM ${tableName}
+      WHERE ${query};`
+    );
+  } catch (error) {
+    //TODO: Handle table doesn't exist error
+    //TODO: Use actual logger
+    console.error(error);
+  }
+};
+
+export const update = async (updateQuery: string): Promise<void> => {
+  try {
+    await db.exec(updateQuery);
+  } catch (error) {
+    //TODO: Handle table doesn't exist error
     //TODO: Use actual logger
     console.error(error);
   }
