@@ -1,14 +1,15 @@
+import os from 'os';
 import * as YoutubeDlWrap from 'youtube-dl-wrap';
 
 import { getProjectRootDir } from '../util/get-project-root-dir';
 import { fileExists } from '../util/file-exists';
 
-const getYouTubeDlExecutableLocation = (downloadPath: string) => {
-  return `${getProjectRootDir()}\\${downloadPath}\\youtube-dl.exe`;
+const getYouTubeDlExecutableLocation = (downloadPath: string): string => {
+  return `${getProjectRootDir()}\\${downloadPath}\\youtube-dl${os.platform() === 'win32' ? '.exe' : ''}`;
 };
 
 //TODO: Use the platform param
-export const downloadYouTubeDl = async (platform: string, downloadPath: string): Promise<void> => {
+export const downloadYouTubeDl = async (downloadPath: string): Promise<void> => {
   try {
     const downloadLocation = getYouTubeDlExecutableLocation(downloadPath);
 
@@ -20,7 +21,7 @@ export const downloadYouTubeDl = async (platform: string, downloadPath: string):
 
       //Download the youtube-dl binary for the given version and platform to the provided path.
       //By default the latest version will be downloaded to "./youtube-dl" and platform = os.platform().
-      await YoutubeDlWrap.default.downloadFromGithub(downloadLocation, githubReleasesData[0].tag_name, 'win32');
+      await YoutubeDlWrap.default.downloadFromGithub(downloadLocation, githubReleasesData[0].tag_name, os.platform());
 
       // //Same as above but always downloads the latest version from the youtube-dl website.
       // const response1 = await downloadFromWebsite(downloadLocation, platform);

@@ -1,4 +1,3 @@
-import { platform } from 'process';
 import * as pjson from '../package.json';
 
 export const application = {
@@ -8,7 +7,6 @@ export const application = {
 };
 
 export const youtubeDl = {
-  platform: platform,
   downloadPath: process.env.YOUTUBE_DL_DOWNLOAD_PATH || 'bin'
 };
 
