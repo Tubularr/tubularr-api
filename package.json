@@ -1,10 +1,10 @@
 {
-  "name": "tubular",
+  "name": "tubularr-api",
   "version": "1.0.0",
   "description": "",
   "repository": {
     "type": "git",
-    "url": "https://github.com/GoogilyBoogily/down-the-tube.git"
+    "url": "https://github.com/Tubularr/tubularr-api.git"
   },
   "license": "ISC",
   "author": "",
@@ -21,9 +21,14 @@
     "markdownlint": "markdownlint **/*.md"
   },
   "dependencies": {
-    "@distube/youtube-dl": "2.2.2",
+    "body-parser": "1.19.0",
+    "class-validator": "0.13.1",
+    "express": "4.17.1",
     "inversify": "5.1.1",
     "reflect-metadata": "0.1.13",
+    "sqlite": "4.0.23",
+    "sqlite3": "5.0.2",
+    "uuid": "3.4.0",
     "youtube-dl-wrap": "2.1.0"
   },
   "devDependencies": {
@@ -31,6 +36,7 @@
     "@babel/plugin-proposal-decorators": "7.13.5",
     "@babel/preset-env": "7.13.5",
     "@babel/preset-typescript": "7.13.0",
+    "@types/express": "github:types/express",
     "@types/jest": "26.0.24",
     "@types/node": "14.17.5",
     "@typescript-eslint/eslint-plugin": "4.28.3",
