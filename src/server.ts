@@ -1,5 +1,4 @@
 import express from 'express';
-import bodyParser from 'body-parser';
 
 import * as config from './config';
 
@@ -68,7 +67,7 @@ const requestLogger = (req, res, next: express.NextFunction) => {
 export const start = (): void => {
   const app = express();
 
-  app.use(bodyParser.json());
+  app.use(express.json());
   app.use(requestLogger);
 
   app.get('/sources', sourcesGet);

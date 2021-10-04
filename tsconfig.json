@@ -15,6 +15,7 @@
     "outDir": "./dist",
     "removeComments": true,
     "resolveJsonModule": true,
+    "skipLibCheck": true,
     "sourceMap": true,
     "target": "ES6"
   }

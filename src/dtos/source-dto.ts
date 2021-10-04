@@ -1,4 +1,4 @@
-import { IsInt, Min, Max, IsString, isString, IsOptional } from 'class-validator';
+import { IsInt, IsOptional, IsString, Max, Min } from 'class-validator';
 
 export default class SourceDto {
   @IsString()

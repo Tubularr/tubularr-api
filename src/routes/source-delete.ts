@@ -9,7 +9,9 @@ export default async function sourceDelete(req: Request, res: Response): Promise
   };
 
   try {
-    await sourceRepository.deleteSource(req.query.uuid);
+    const uuid = String(req.query.uuid);
+
+    await sourceRepository.deleteSource(uuid);
   } catch (error) {
     response.statusCode = 500;
     response.body = error;

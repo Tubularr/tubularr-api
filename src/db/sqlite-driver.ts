@@ -5,7 +5,6 @@ import { v1 as uuid } from 'uuid';
 let db;
 
 export const open = async (dbLocation = '/tmp'): Promise<void> => {
-  // open the database
   db = await openDB({
     filename: `${dbLocation}/database.db`,
     driver: sqlite3.Database
@@ -16,6 +15,7 @@ export const close = async (): Promise<void> => {
   await db.close(); //TODO: Add error handling?
 };
 
+//TODO: Run this if the initial table doesn't exit
 const createInitialTables = async (): Promise<void> => {
   await db.exec(`CREATE TABLE sources (
 	  name TEXT,
@@ -36,6 +36,8 @@ const createInitialTables = async (): Promise<void> => {
     downloadThumbnails INTEGER,
     downloadNfo INTEGER,
     deleteSchedule TEXT,
+    downloadSubtitles INTEGER,
+    subtitleLanguage TEXT,
     uuid TEXT
   )`);
 };

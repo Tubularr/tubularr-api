@@ -1,4 +1,4 @@
-import { Request, Response } from 'express';
+import { Response } from 'express';
 import { validateOrReject } from 'class-validator';
 
 import * as sourceRepository from '../repositories/source-repository';
