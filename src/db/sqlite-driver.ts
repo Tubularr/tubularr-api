@@ -16,8 +16,9 @@ export const close = async (): Promise<void> => {
 };
 
 //TODO: Run this if the initial table doesn't exit
-const createInitialTables = async (): Promise<void> => {
-  await db.exec(`CREATE TABLE sources (
+export const createInitialTables = async (): Promise<void> => {
+  //TODO: Also create indexes (use if not exists)
+  await db.exec(`CREATE TABLE IF NOT EXISTS sources (
 	  name TEXT,
     sourceKey TEXT,
     directory TEXT,
@@ -38,6 +39,19 @@ const createInitialTables = async (): Promise<void> => {
     deleteSchedule TEXT,
     downloadSubtitles INTEGER,
     subtitleLanguage TEXT,
+    uuid TEXT
+  )`);
+
+  await db.exec(`CREATE TABLE IF NOT EXISTS media_metadata (
+    name TEXT,
+    parentUuid TEXT,
+    uuid TEXT
+  )`);
+
+  await db.exec(`CREATE TABLE IF NOT EXISTS queue (
+    name TEXT,
+    parentUuid TEXT,
+    url TEXT,
     uuid TEXT
   )`);
 };

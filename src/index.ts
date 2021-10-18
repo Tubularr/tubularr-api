@@ -9,6 +9,8 @@ const initialize = async (): Promise<void> => {
 
   await sqliteDb.open(config.db.folder);
 
+  await sqliteDb.createInitialTables();
+
   server.start();
 };
 

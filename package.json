@@ -29,7 +29,7 @@
     "sqlite": "4.0.23",
     "sqlite3": "5.0.2",
     "uuid": "8.3.2",
-    "youtube-dl-wrap": "2.1.0"
+    "youtube-dl-wrap": "2.1.1"
   },
   "devDependencies": {
     "@babel/core": "7.14.6",

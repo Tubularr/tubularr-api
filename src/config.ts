@@ -7,7 +7,7 @@ export const application = {
 };
 
 export const youtubeDl = {
-  downloadPath: process.env.YOUTUBE_DL_DOWNLOAD_PATH || 'bin'
+  downloadPath: process.env.YOUTUBE_DL_EXECUTABLE_PATH || 'bin'
 };
 
 export const server = {
@@ -16,4 +16,8 @@ export const server = {
 
 export const db = {
   folder: process.env.SQLITE_DB_FOLDER || 'db'
+};
+
+export const media = {
+  downloads: process.env.DOWNLOADS || 'downloads'
 };
