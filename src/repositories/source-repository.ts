@@ -9,6 +9,14 @@ export const getAllSources = async (): Promise<Array<SourceDto>> => {
   return results;
 };
 
+export const getSource = async (uuid: string): Promise<SourceDto> => {
+  let query = `SELECT * FROM ${sourcesTableName} t WHERE t.uuid = '${uuid}'`;
+
+  const result: SourceDto = await sqliteDb.get(query);
+
+  return result;
+};
+
 export const insertSource = async (source: SourceDto): Promise<void> => {
   await sqliteDb.insertSource(source);
 };

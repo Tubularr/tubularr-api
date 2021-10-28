@@ -3,6 +3,7 @@ import express from 'express';
 import * as config from './config';
 
 import sourcesGet from './routes/sources-get';
+import sourceGet from './routes/source-get';
 import sourcePost from './routes/source-post';
 import sourceDelete from './routes/source-delete';
 import sourcesPatch from './routes/source-patch';
@@ -71,6 +72,7 @@ export const start = (): void => {
   app.use(requestLogger);
 
   app.get('/sources', sourcesGet);
+  app.get('/source', sourceGet);
   app.post('/source', sourcePost);
   app.delete('/source', sourceDelete);
   app.patch('/source', sourcesPatch);

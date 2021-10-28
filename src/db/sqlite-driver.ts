@@ -1,3 +1,4 @@
+import path from 'path';
 import sqlite3 from 'sqlite3';
 import { open as openDB } from 'sqlite';
 import { v1 as uuid } from 'uuid';
@@ -6,7 +7,7 @@ let db;
 
 export const open = async (dbLocation = '/tmp'): Promise<void> => {
   db = await openDB({
-    filename: `${dbLocation}/database.db`,
+    filename: `${path.resolve(__dirname, 'database.db')}`,
     driver: sqlite3.Database
   });
 };
@@ -168,4 +169,18 @@ export const update = async (updateQuery: string): Promise<void> => {
     //TODO: Use actual logger
     console.error(error);
   }
+};
+
+export const get = async (getQuery: string) => {
+  let result;
+
+  try {
+    result = await db.get(getQuery);
+  } catch (error) {
+    //TODO: Handle table doesn't exist error
+    //TODO: Use actual logger
+    console.error(error);
+  }
+
+  return result;
 };
